@@ -131,7 +131,7 @@ const DiagramPage: React.FC = () => {
           },
         };
       });
-      console.log("dagregraph",layoutedNodes[1].position)
+
       return { nodes: layoutedNodes, edges };
       
     },
