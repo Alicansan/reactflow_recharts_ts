@@ -1,50 +1,37 @@
-# React + TypeScript + Vite
+# Takım ve Kullanıcı Yönetim Uygulaması
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Proje Açıklaması
+Bu proje, takımları ve kullanıcıları yönetmek için geliştirilmiş modern bir web uygulamasıdır. Aşağıdaki özelliklere sahiptir:
 
-Currently, two official plugins are available:
+- Takım ve kullanıcı oluşturma
+- İnteraktif takım şeması görselleştirmesi
+- Takım ve kullanıcı istatistiklerinin grafik gösterimi
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Teknolojiler
+- React
+- TypeScript
+- Vite
+- React Flow
+- Recharts
+- Tailwind CSS
 
-## Expanding the ESLint configuration
+## Özellikler
+1. **Ana Sayfa**: 
+   - Yeni takım ve kullanıcı ekleme formu
+   - Mevcut takımların listesi
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. **Diagram Sayfası**:
+   - Takımların ve kullanıcıların interaktif görselleştirilmesi
+   - Takım düğümlerini genişletme/daraltma özelliği
 
-- Configure the top-level `parserOptions` property like this:
+3. **Grafik Sayfası**:
+   - Takımlara göre kullanıcı dağılımı (Pasta Grafik)
+   - Takımların rol bazında kompozisyonu (Çubuk Grafik)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Kurulum
+1. Depoyu klonlayın
+2. Bağımlılıkları yüklemek için `npm install` komutunu çalıştırın
+3. Geliştirme sunucusunu başlatmak için `npm run dev` komutunu çalıştırın
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Katkıda Bulunma
+Herhangi bir hata veya geliştirme önerisi için lütfen [issue](https://github.com/Alicansan/reactflow_recharts_ts/issues) açınız.
