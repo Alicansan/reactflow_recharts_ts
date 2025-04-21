@@ -40,7 +40,7 @@ const ChartsPage: React.FC = () => {
 
     const roleCount: Record<string, number> = {};
     users.forEach((user) => {
-      const role = user.role || "Rol yok";
+      const role = user.role || "No Role";
       roleCount[role] = (roleCount[role] || 0) + 1;
     });
 
@@ -61,7 +61,7 @@ const ChartsPage: React.FC = () => {
 
   return (
     <div className="p-6">
-      <h1 className="mb-6 text-2xl font-bold">Grafikler</h1>
+      <h1 className="mb-6 text-2xl font-bold">Graphics</h1>
 
       <div className="grid gap-8 md:grid-cols-2">
         {/* Pie Chart */}

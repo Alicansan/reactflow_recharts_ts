@@ -18,7 +18,7 @@ const UserForm: React.FC = () => {
 
   return (
     <div className="rounded-lg bg-white p-4 shadow">
-      <h2 className="mb-4 text-xl font-semibold">Kullanıcı Ekle</h2>
+      <h2 className="mb-4 text-xl font-semibold">Add a Team Member</h2>
       {teams.length === 0 ? (
         <div className="text-amber-600">You must create a team first!</div>
       ) : (
