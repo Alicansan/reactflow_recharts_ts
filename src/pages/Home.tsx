@@ -18,9 +18,9 @@ const Home: React.FC = () => {
 
         <div>
           <div className="rounded-lg bg-white p-4 shadow">
-            <h2 className="mb-4 text-xl font-semibold">Mevcut Ekipler</h2>
+            <h2 className="mb-4 text-xl font-semibold">Current Teams</h2>
             {teams.length === 0 ? (
-              <p className="text-gray-500">Henüz ekip oluşturulmadı.</p>
+              <p className="text-gray-500">Team list is empty</p>
             ) : (
               <div className="space-y-4">
                 {teams.map((team) => {
@@ -33,7 +33,7 @@ const Home: React.FC = () => {
                       </p>
                       <div className="mt-2">
                         <h4 className="bg-amber-100 text-sm font-medium">
-                          Kullanıcılar ({teamUsers.length})
+                          Members ({teamUsers.length})
                         </h4>
                         {teamUsers.length > 0 ? (
                           <ul className="mt-1 text-sm">
@@ -45,7 +45,7 @@ const Home: React.FC = () => {
                           </ul>
                         ) : (
                           <p className="text-xs text-gray-500">
-                            Henüz kullanıcı yok
+                            No current member yet
                           </p>
                         )}
                       </div>

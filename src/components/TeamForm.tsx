@@ -17,7 +17,7 @@ const TeamForm: React.FC = () => {
 
   return (
     <div className="mb-6 rounded-lg bg-white p-4 shadow">
-      <h2 className="mb-4 text-xl font-semibold">Ekip Oluştur</h2>
+      <h2 className="mb-4 text-xl font-semibold">Create a Team</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="mb-1 block text-sm font-medium text-gray-700">
@@ -33,7 +33,7 @@ const TeamForm: React.FC = () => {
         </div>
         <div className="mb-4">
           <label className="mb-1 block text-sm font-medium text-gray-700">
-            Açıklama
+            Explanation
           </label>
           <textarea
             value={description}
@@ -46,7 +46,7 @@ const TeamForm: React.FC = () => {
           type="submit"
           className="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
         >
-          Ekip Oluştur
+          Create Team
         </button>
       </form>
     </div>

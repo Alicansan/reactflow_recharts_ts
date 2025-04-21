@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState} from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import "@xyflow/react/dist/style.css";
 import {
   ReactFlow,
@@ -29,7 +29,6 @@ const NODE_HEIGHT = 36;
 const DiagramPage: React.FC = () => {
   const { teams, users } = useData();
   const [layout, setLayout] = useState<"TB" | "LR">("TB");
-   
 
   // initialNodes ile oluşturulacak node type'ları burdan geliyor
   const nodeTypes: NodeTypes = useMemo(
@@ -46,16 +45,14 @@ const DiagramPage: React.FC = () => {
 
     users.forEach((user) => {
       const teamId = user.teamId; //kUllanıcının bağlı olduğu takımın id'sini al
-      if (!map.has(teamId)) { 
-            map.set(teamId, []); // eğer takımda kimse yoksa boş bir dizi oluştur
+      if (!map.has(teamId)) {
+        map.set(teamId, []); // eğer takımda kimse yoksa boş bir dizi oluştur
       }
-      map.get(teamId)?.push(user.id);//user'ı takıma ekle
+      map.get(teamId)?.push(user.id); //user'ı takıma ekle
     });
 
     return map;
   }, [users]);
-
-
 
   const initialNodes: Node[] = useMemo(() => {
     const teamNodes = teams.map((team) => ({
@@ -76,14 +73,12 @@ const DiagramPage: React.FC = () => {
         id: user.id,
         type: "userNode",
         data: { label: user.name, userId: user.id, role: user.role },
-        position: { x: 0, y: 0 }, 
+        position: { x: 0, y: 0 },
       };
     });
     return [...teamNodes, ...userNodes];
-    
   }, [teams, users, teamChildrenMap]);
 
-  
   // Team - User arası bağlantıları oluşturur
   const initialEdges: Edge[] = useMemo(() => {
     return users.map((user) => ({
@@ -94,7 +89,7 @@ const DiagramPage: React.FC = () => {
     }));
   }, [users]);
 
-  // Dagrejs layout 
+  // Dagrejs layout
   const getLayoutedElements = useCallback(
     (nodes: Node[], edges: Edge[], direction: "TB" | "LR" = "TB") => {
       const dagreGraph = new dagre.graphlib.Graph().setDefaultEdgeLabel(
@@ -133,7 +128,6 @@ const DiagramPage: React.FC = () => {
       });
 
       return { nodes: layoutedNodes, edges };
-      
     },
     [],
   );
@@ -141,7 +135,7 @@ const DiagramPage: React.FC = () => {
   // Node'ları ve edge'leri koordinat sisteminde yerleştir
   const layoutedElements = useMemo(
     () => getLayoutedElements(initialNodes, initialEdges),
-    [initialNodes, initialEdges, getLayoutedElements ],
+    [initialNodes, initialEdges, getLayoutedElements],
   );
 
   const [nodes, setNodes, onNodesChange] = useNodesState(
@@ -150,8 +144,6 @@ const DiagramPage: React.FC = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(
     layoutedElements.edges,
   );
-
- 
 
   // Edge'leri ekler
   const onConnect = useCallback(
@@ -198,9 +190,8 @@ const DiagramPage: React.FC = () => {
             };
           }
 
-         
           const teamNode = nds.find((n) => n.id === nodeId);
-          
+
           if (
             teamNode &&
             teamNode.data &&
@@ -221,7 +212,7 @@ const DiagramPage: React.FC = () => {
         (eds) =>
           eds.map((edge) => {
             const teamNode = nodes.find((n) => n.id === nodeId);
-           
+
             if (
               teamNode &&
               teamNode.data &&
@@ -241,13 +232,12 @@ const DiagramPage: React.FC = () => {
     },
     [nodes, setNodes, setEdges],
   );
-  
+
   React.useEffect(() => {
     const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
       initialNodes,
       initialEdges,
-      layout
-      
+      layout,
     );
     setNodes(layoutedNodes);
     setEdges(layoutedEdges);
@@ -260,16 +250,15 @@ const DiagramPage: React.FC = () => {
     setEdges,
     getLayoutedElements,
 
-    layout
-    
+    layout,
   ]);
 
   return (
     <div className="h-full w-full">
       <div className="h-full">
         <div className="absolute top-40 right-2 text-gray-500 sm:top-20">
-          <p>Kullanıcıyı sağ tuş ile silebilirsiniz</p>
-          <p>Ekip listesini sağ tuş ile kapatabilirsiniz</p>
+          <p>Member can be deleted via right click</p>
+          <p>Team list can be shrink via right click</p>
         </div>
         <ReactFlow
           nodes={nodes}
@@ -300,13 +289,13 @@ const DiagramPage: React.FC = () => {
               className="mr-2 rounded bg-blue-500 px-4 py-2 text-white"
               onClick={() => onLayoutChange("TB")}
             >
-              <ArrowBigDown/>
+              <ArrowBigDown />
             </button>
             <button
               className="rounded bg-blue-500 px-4 py-2 text-white"
               onClick={() => onLayoutChange("LR")}
             >
-              <ArrowBigRight/>
+              <ArrowBigRight />
             </button>
           </Panel>
         </ReactFlow>

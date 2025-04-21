@@ -7,21 +7,19 @@ interface UserNodeProps {
   data: {
     label: string;
     userId: string;
-    role: string
+    role: string;
   };
 }
 
 const UserNode: React.FC<UserNodeProps> = ({ data }) => {
   const { removeUser } = useData();
 
- 
-
   const handleContextMenu = useCallback(
     (event: React.MouseEvent) => {
       event.preventDefault();
       if (
         window.confirm(
-          `${data.label} kullanıcısını silmek istediğinize emin misiniz?`,
+          `Are you sure you want to delete  the user ${data.label} `,
         )
       ) {
         removeUser(data.userId);
@@ -36,7 +34,7 @@ const UserNode: React.FC<UserNodeProps> = ({ data }) => {
       onContextMenu={handleContextMenu}
     >
       <Handle type="target" position={Position.Top} />
-      
+
       <div className="font-medium">{data.label}</div>
       <div className="font-medium">{data?.role}</div>
 

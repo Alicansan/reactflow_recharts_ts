@@ -27,7 +27,6 @@ const COLORS = [
 const ChartsPage: React.FC = () => {
   const { teams, getTeamUsers } = useData();
 
-  
   const pieChartData = teams.map((team) => {
     const users = getTeamUsers(team.id);
     return {
@@ -36,11 +35,9 @@ const ChartsPage: React.FC = () => {
     };
   });
 
-  
   const barChartData = teams.map((team) => {
     const users = getTeamUsers(team.id);
 
-    
     const roleCount: Record<string, number> = {};
     users.forEach((user) => {
       const role = user.role || "Rol yok";
@@ -53,7 +50,6 @@ const ChartsPage: React.FC = () => {
     };
   });
 
-  
   const allRoles = new Set<string>();
   barChartData.forEach((team) => {
     Object.keys(team).forEach((key) => {
@@ -71,7 +67,7 @@ const ChartsPage: React.FC = () => {
         {/* Pie Chart */}
         <div className="rounded-lg bg-white p-4 shadow">
           <h2 className="mb-4 text-xl font-semibold">
-            Ekiplere Göre Kullanıcı Dağılımı
+            Team member Distribution by Teams
           </h2>
           <div className="h-64">
             {pieChartData.length > 0 ? (
@@ -101,7 +97,7 @@ const ChartsPage: React.FC = () => {
               </ResponsiveContainer>
             ) : (
               <div className="flex h-full items-center justify-center text-gray-500">
-                Veri yok
+                No Data
               </div>
             )}
           </div>
@@ -134,7 +130,7 @@ const ChartsPage: React.FC = () => {
               </ResponsiveContainer>
             ) : (
               <div className="flex h-full items-center justify-center text-gray-500">
-                Veri yok
+                No Data
               </div>
             )}
           </div>

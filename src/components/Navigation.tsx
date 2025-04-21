@@ -1,9 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 
 const NAV_LINKS = [
-  { path: "/", label: "Ekipler" },
-  { path: "/diagram", label: "Diyagram" },
-  { path: "/charts", label: "Grafikler" },
+  { path: "/", label: "Teams" },
+  { path: "/diagram", label: "Diagram" },
+  { path: "/charts", label: "Graphics" },
 ];
 
 const Navigation: React.FC = () => {
@@ -13,7 +13,7 @@ const Navigation: React.FC = () => {
     <nav className="bg-gray-800 p-4 text-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between">
         <Link to="/" className="text-xl font-bold">
-          Ekip Yönetimi
+          Team Management
         </Link>
 
         <div className="flex space-x-4">
